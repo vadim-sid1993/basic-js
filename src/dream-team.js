@@ -18,7 +18,7 @@ function createDreamTeam(/* members */) {
   // remove line with error and write your code here
   let x = [];
   let y = [];
-  if (members.isArray) {
+  if (Array.isArray(members)) {
     for (i = 0; i < members.length; i++) {
       if (typeof (members[i]) == "string") {
         x.push(members[i])

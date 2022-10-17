@@ -19,14 +19,51 @@ const { NotImplementedError } = require('../extensions/index.js');
  * reverseMachine.decrypt('AEIHQX SX DLLU!', 'alphonse') => '!NWAD TA KCATTA'
  * 
  */
-class VigenereCipheringMachine {
-  encrypt() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+ class VigenereCipheringMachine {
+  constructor(type) {
+    this.type = type;
   }
-  decrypt() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+
+
+  encrypt(message, key) {
+    let text = message.toUpperCase();
+    let fount = key.toUpperCase();
+    const textLength = text.length;
+    fount = fount.repeat(Math.ceil(textLength / key.length)).split('');
+    let total = "";
+    for(let i = 0; i < textLength; i++) {
+      if(65 <= text.charCodeAt(i) &&  text.charCodeAt(i) < 91) {
+        total += String.fromCharCode(((text.charCodeAt(i) + fount[0].charCodeAt(0)) % 26) + 65);
+        fount.shift();
+      } else {
+        total += text.charAt(i);
+      }
+    }
+    if(this.type === false) {
+      return total.split('').reverse().join('');
+    }
+    return total;
+  }  
+  
+  
+  decrypt(message, key) {
+    let text = message.toUpperCase();
+    let fount = key.toUpperCase();
+    const messageLength = text.length;
+    fount = fount.repeat(Math.ceil(messageLength / key.length)).split('');
+    let total = "";
+    for(let i = 0; i < messageLength; i++) {
+      if(65 <= text.charCodeAt(i) &&  text.charCodeAt(i) < 91) {
+        total += String.fromCharCode(((text.charCodeAt(i) + 26 - fount[0].charCodeAt(0)) % 26) + 65);
+        fount.shift();
+      } else {
+        total += text.charAt(i);
+      }
+    }
+    if(this.type === false) {
+      return total.split('').reverse().join('');
+    }
+    return total;
   }
 }
 

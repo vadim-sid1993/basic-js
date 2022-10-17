@@ -13,22 +13,20 @@ const { NotImplementedError } = require('../extensions/index.js');
 function encodeLine( str ) {
   // throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
-  let result = [];
+  let total = [];
   let num = 1;
-
   for(let i = 0; i < str.length; i++) {
       if (i === 0) {
-          result.push(str[0])
-      } else if (result[result.length - 1].includes(str[i])) {
+          total.push(str[0])
+      } else if (total[total.length - 1].includes(str[i])) {
           num += 1;
-          result[result.length - 1] = `${num}${str[i]}`;  
+          total[total.length - 1] = `${num}${str[i]}`;  
       } else {
-          result.push(str[i]);
+          total.push(str[i]);
           num = 1;
       }
   }
-
-  return result.join('');
+  return total.join('');
 }
 
 module.exports = {

@@ -16,21 +16,15 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function repeater(str, options ) {
-  // throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
   str = String(str)
-
   let arr = [];
   let substr = '';
-
   for (let i = 0; i < options.repeatTimes; i++) {
       (i === 0) ? arr.push(str) : arr.push((options.separator || '+')+ str);   
   }
-
   if(typeof(options.additionRepeatTimes) === 'undefined' && options.addition) {
       options.additionRepeatTimes = 1;
   }
-
   for (let j = 0; j < options.additionRepeatTimes; j++) {
       (j === 0) ? substr += options.addition : substr += (options.additionSeparator || '|') + options.addition; 
   }

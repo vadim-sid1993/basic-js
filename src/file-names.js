@@ -18,22 +18,19 @@ const { NotImplementedError } = require('../extensions/index.js');
 function renameFiles(names) {
   // throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
-  let result = [];
-  let numbers = {
-
-  }
-
+  let total = [];
+  let num = {
+  };
   for(let file of names) {
-      if (result.includes(file)) {
-          result.push(`${file}(${numbers.file})`);
-          numbers.file += 1
+      if (total.includes(file)) {
+          total.push(`${file}(${num.file})`);
+          num.file += 1
       } else {
-          result.push(file);
-          numbers.file = 1;
+          total.push(file);
+          num.file = 1;
       }
   }
-
-  return result;
+  return total;
 }
 
 module.exports = {

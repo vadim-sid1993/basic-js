@@ -23,17 +23,12 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function getDNSStats(array ) {
-  // throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
   let result = {};
-  
   array.forEach(item => {
       item = item.split('.').reverse();
       let string = '';
-
       for(let word of item) {
           string += `.${word}`;
-
           if (result[string]) {
               result[string] += 1;
           } else {
